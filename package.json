@@ -1,0 +1,71 @@
+{
+    "name": "remix-cloudflare",
+    "private": true,
+    "sideEffects": false,
+    "type": "module",
+    "imports": {
+        "#*": "./*"
+    },
+    "scripts": {
+        "build": "remix build",
+        "dev": "remix dev --manual -c \"npm run start\"",
+        "format": "prettier --log-level warn --write .",
+        "lint": "eslint --max-warnings 0 --fix .",
+        "start": "wrangler pages dev --compatibility-date=2023-12-25 ./public",
+        "tsc": "tsc"
+    },
+    "dependencies": {
+        "@conform-to/react": "0.9.1",
+        "@conform-to/zod": "0.9.1",
+        "@epic-web/client-hints": "1.2.2",
+        "@epic-web/invariant": "1.0.0",
+        "@headlessui/react": "2.0.0-alpha.3",
+        "@heroicons/react": "2.1.1",
+        "@nasa-gcn/remix-seo": "2.0.0",
+        "@remix-run/cloudflare": "2.5.0",
+        "@remix-run/cloudflare-pages": "2.5.0",
+        "@remix-run/css-bundle": "2.5.0",
+        "@remix-run/react": "2.5.0",
+        "clsx": "2.1.0",
+        "cobe": "0.6.3",
+        "cookie": "0.6.0",
+        "crypto-js": "3.3.0",
+        "drizzle-orm": "0.29.3",
+        "intl-parse-accept-language": "1.0.0",
+        "is-ip": "5.0.1",
+        "isbot": "4.4.0",
+        "nanoid": "5.0.4",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-spring": "9.7.3",
+        "remix-utils": "7.5.0",
+        "tailwind-merge": "2.2.0",
+        "zod": "3.22.4"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "4.20231218.0",
+        "@remix-run/dev": "2.5.0",
+        "@samialdury/config": "6.2.0",
+        "@types/cookie": "0.6.0",
+        "@types/react": "18.2.47",
+        "@types/react-dom": "18.2.18",
+        "@typescript-eslint/eslint-plugin": "6.18.1",
+        "autoprefixer": "10.4.16",
+        "drizzle-kit": "0.20.12",
+        "eslint": "8.56.0",
+        "eslint-config-prettier": "9.1.0",
+        "eslint-plugin-import": "2.29.1",
+        "eslint-plugin-jsx-a11y": "6.8.0",
+        "eslint-plugin-react": "7.33.2",
+        "eslint-plugin-react-hooks": "4.6.0",
+        "postcss": "8.4.33",
+        "prettier": "3.2.2",
+        "tailwindcss": "3.4.1",
+        "typescript": "5.3.3",
+        "wrangler": "3.22.4"
+    },
+    "engines": {
+        "node": ">=20",
+        "pnpm": ">=8"
+    }
+}

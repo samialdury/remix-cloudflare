@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --font-sans: 'Inter';
+    }
+
+    @supports (font-variation-settings: normal) {
+        :root {
+            --font-sans: 'InterVariable';
+        }
+    }
+
+    body {
+        font-feature-settings:
+            'rlig' 1,
+            'calt' 1;
+    }
+}
