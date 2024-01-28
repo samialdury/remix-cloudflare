@@ -49,15 +49,34 @@ export const links: LinksFunction = () => [
         rel: 'preconnect',
         href: 'https://rsms.me',
     },
-    // Preload CSS as a resource to avoid render blocking
+    {
+        rel: 'preconnect',
+        href: 'https://unpkg.com',
+    },
+    // Preload to avoid render blocking
     { rel: 'preload', href: 'https://rsms.me/inter/inter.css', as: 'style' },
+    {
+        rel: 'preload',
+        href: 'https://unpkg.com/aos@next/dist/aos.css',
+        as: 'style',
+    },
+    {
+        rel: 'preload',
+        href: 'https://unpkg.com/aos@next/dist/aos.js',
+        as: 'script',
+    },
     { rel: 'preload', href: globalStyleSheetUrl, as: 'style' },
     ...(cssBundleHref
         ? [{ rel: 'preload', href: cssBundleHref, as: 'style' }]
         : []),
+    // Load the actual resources
     {
         rel: 'stylesheet',
         href: 'https://rsms.me/inter/inter.css',
+    },
+    {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/aos@next/dist/aos.css',
     },
     { rel: 'stylesheet', href: globalStyleSheetUrl },
     ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
@@ -179,16 +198,7 @@ function Header({
     return (
         <header className="sticky top-0 z-10 border-b border-zinc-950/10 bg-white px-6 py-4 dark:border-white/5 dark:bg-zinc-900 sm:px-8 lg:z-10 lg:flex lg:h-16 lg:items-center lg:py-0">
             <div className="mx-auto flex w-full max-w-xl items-center justify-between lg:max-w-7xl">
-                {/* <div>
-                    <Link to="/" aria-label="Home">
-                        <div className="whitespace-nowrap font-display text-lg font-normal lg:text-2xl">
-                            <span>remix</span>
-                            <span>-</span>
-                            <span className="text-orange-400">cloudflare</span>
-                        </div>
-                    </Link>
-                </div> */}
-                <div className="flex items-center justify-center space-x-2 whitespace-nowrap font-display text-lg font-normal lg:text-2xl">
+                <div className="font-display flex items-center justify-center space-x-2 whitespace-nowrap text-lg font-normal lg:text-2xl">
                     <a
                         href="https://remix.run"
                         rel="noreferrer noopener"
@@ -312,13 +322,23 @@ function Document({
             </head>
             <body className="min-h-screen overflow-x-hidden overflow-y-scroll bg-white font-sans text-black antialiased dark:bg-zinc-900 dark:text-white">
                 {children}
+                <TailwindIndicator />
+                <script
+                    nonce={nonce}
+                    src="https://unpkg.com/aos@next/dist/aos.js"
+                />
                 <script
                     nonce={nonce}
                     dangerouslySetInnerHTML={{
                         __html: `window.ENV = ${JSON.stringify(env)}`,
                     }}
                 />
-                <TailwindIndicator />
+                <script
+                    nonce={nonce}
+                    dangerouslySetInnerHTML={{
+                        __html: `AOS.init();`,
+                    }}
+                />
                 <ScrollRestoration nonce={nonce} />
                 <Scripts nonce={nonce} />
                 <LiveReload nonce={nonce} />

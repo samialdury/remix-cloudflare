@@ -1,8 +1,17 @@
+import { useNonce } from '#app/lib/nonce-provider'
 import createGlobe from 'cobe'
 import { useEffect, useRef } from 'react'
 import { useSpring } from 'react-spring'
 
-export function Cobe({ lat, long }: { lat: number; long: number }) {
+export function Cobe({
+    lat,
+    long,
+    ...props
+}: {
+    lat: number
+    long: number
+    props?: React.ComponentProps<'div'>
+}) {
     const location: [number, number] = [lat, long]
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const pointerInteracting = useRef<null | number | React.Touch['clientX']>(
@@ -64,8 +73,11 @@ export function Cobe({ lat, long }: { lat: number; long: number }) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    const nonce = useNonce()
+
     return (
         <div
+            nonce={nonce}
             style={{
                 width: '100%',
                 maxWidth: 600,
@@ -73,6 +85,7 @@ export function Cobe({ lat, long }: { lat: number; long: number }) {
                 margin: 'auto',
                 position: 'relative',
             }}
+            {...props}
         >
             <canvas
                 ref={canvasRef}
@@ -117,6 +130,7 @@ export function Cobe({ lat, long }: { lat: number; long: number }) {
                         })
                     }
                 }}
+                nonce={nonce}
                 style={{
                     width: '100%',
                     height: '100%',

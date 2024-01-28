@@ -54,8 +54,11 @@ export default async function handleRequest(
             "default-src 'self'",
             "script-src 'self' 'strict-dynamic' 'nonce-" + nonce + "'",
             "script-src-attr 'nonce-" + nonce + "'",
-            "style-src 'self' https://rsms.me 'nonce-" + nonce + "'",
-            "img-src 'self'",
+            "script-src-elem 'self' https://unpkg.com 'nonce-" + nonce + "'",
+            "style-src 'self' https://rsms.me  https://unpkg.com 'nonce-" +
+                nonce +
+                "'",
+            "img-src 'self' data:",
             "font-src 'self' https://rsms.me",
             "media-src 'self'",
             "frame-src 'self'",

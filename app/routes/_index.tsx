@@ -126,13 +126,25 @@ export default function Index() {
             <Cobe
                 lat={Number(loaderData.cf.latitude)}
                 long={Number(loaderData.cf.longitude)}
+                data-aos="zoom-in"
             />
-            <p className="px-2 text-center text-xl text-gray-700 dark:text-gray-400">
+            <p
+                className="px-2 text-center text-xl text-gray-700 dark:text-gray-400"
+                data-aos-delay="200"
+                data-aos="fade-up"
+            >
                 📍 drag to see your location on the globe
             </p>
 
-            <div className="flex flex-col items-center justify-center gap-4 px-5 pt-10 *:max-w-2xl sm:px-0">
-                <section className="flex flex-col items-center justify-center">
+            <div
+                className="flex flex-col items-center justify-center gap-4 px-5 pt-10 *:max-w-2xl sm:px-0"
+                data-aos-delay="400"
+                data-aos="fade-up"
+            >
+                <section
+                    className="flex flex-col items-center justify-center"
+                    data-aos="fade-up"
+                >
                     <p className="text-balance text-center text-xl font-semibold">
                         Time from server-sent event:
                     </p>
@@ -151,8 +163,11 @@ export default function Index() {
                         (check the network tab to see the SSE requests)
                     </p>
                 </section>
-                <Separator />
-                <section className="flex w-full flex-col items-center justify-center">
+                <Separator data-aos="fade-up" />
+                <section
+                    className="flex w-full flex-col items-center justify-center"
+                    data-aos="fade-up"
+                >
                     <p className="text-balance text-center text-xl font-semibold">
                         <code>`cf`</code> request properties:
                     </p>
@@ -162,8 +177,11 @@ export default function Index() {
                         </output>
                     </div>
                 </section>
-                <Separator />
-                <section className="flex w-full flex-col items-center justify-center">
+                <Separator data-aos="fade-up" />
+                <section
+                    className="flex w-full flex-col items-center justify-center"
+                    data-aos="fade-up"
+                >
                     <p className="text-balance text-center text-xl font-semibold">
                         Client hints:
                     </p>
@@ -173,8 +191,11 @@ export default function Index() {
                         </output>
                     </div>
                 </section>
-                <Separator />
-                <section className="flex w-full flex-col items-center justify-center">
+                <Separator data-aos="fade-up" />
+                <section
+                    className="flex w-full flex-col items-center justify-center"
+                    data-aos="fade-up"
+                >
                     <p className="text-balance text-center text-xl font-semibold">
                         Example form submission:
                     </p>
